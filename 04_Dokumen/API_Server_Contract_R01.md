@@ -1,84 +1,92 @@
 # API Server Contract R01
 
-Dokumen ini adalah draft kontrak server untuk baseline awal. Belum ada implementasi firmware aktif yang mengirim request ini.
+This document now reflects the first working firmware-to-backend contract used by the ESP32-CAM bridge implementation.
 
-## Tujuan
+## Goal
 
-Menjaga agar executor firmware dan executor server punya asumsi awal yang sama saat project mulai diisi.
+Keep firmware and backend assumptions aligned for the current image snapshot workflow.
 
-## Arah Data
+## Data Direction
 
-`ESP32-CAM -> HTTP API Server -> storage / downstream service`
+`ESP32-CAM -> HTTP API Server -> latest image storage + archive + dashboard viewer`
 
 ## Base URL
 
-Default format:
+Default device-side format:
 
 ```text
-http://<mini-pc-ip>:8000/api/v1
+http://<mini-pc-ip>/api/v1
 ```
 
-Nilai final tetap configurable di firmware.
+Current deployment default on the mini PC:
 
-## Endpoint Draft
+```text
+http://192.168.1.100/api/v1
+```
+
+The firmware still keeps this value configurable from the local web portal.
+
+## Active Endpoints
 
 ### 1. Heartbeat
 
 `POST /api/v1/devices/{device_id}/heartbeat`
 
-Body JSON draft:
+Content type:
+
+```text
+application/json
+```
+
+Current heartbeat body:
 
 ```json
 {
-  "device_id": "esp32cam-01",
-  "fw_version": "v0.1.0",
-  "uptime_ms": 123456,
-  "wifi_rssi": -58,
-  "free_heap": 180000,
-  "camera_ready": true,
-  "server_enabled": true
+  "schema_version": "solar-backend-r01",
+  "source_mode": "esp32",
+  "device_id": "CP_Panel_Surya",
+  "line_id": "CP_Panel_Surya",
+  "running": true,
+  "active_scenario": "camera_snapshot_uploader",
+  "backend_base_url": "http://192.168.1.100/api/v1",
+  "last_send_ok": true,
+  "last_send_at_ms": 123456
 }
 ```
 
-### 2. Upload Frame
+### 2. Snapshot Upload
 
-`POST /api/v1/devices/{device_id}/frames`
+`POST /api/v1/devices/{device_id}/camera-snapshot`
 
-Content type draft:
+Content type:
 
 ```text
-multipart/form-data
+image/jpeg
 ```
 
-Field draft:
+Request body:
 
-- `frame` = file JPEG
-- `frame_id` = unique ID dari device
-- `captured_at_ms` = timestamp device
-- `camera_profile` = nama profile kamera
-- `content_type` = `image/jpeg`
+- raw JPEG bytes only
 
-Header draft:
+Optional header when the backend ingest API key is enabled:
 
-- `X-API-Key: <api_key>`
+```text
+X-API-Key: <api_key>
+```
 
-### 3. Optional Device Config Fetch
+Expected result:
 
-`GET /api/v1/devices/{device_id}/config`
+- HTTP `201` on success
 
-Endpoint ini optional. Jangan diandalkan sebelum server side benar-benar menyediakannya.
+## Current Design Decisions
 
-## Prinsip Kontrak
+- `device_id` must stay stable because the backend stores latest snapshot per device.
+- snapshot upload uses raw `image/jpeg` instead of multipart form data.
+- the camera firmware sends a lightweight heartbeat but does not send full solar telemetry samples.
+- timestamp basis for heartbeat is device uptime via `millis()`.
 
-- `device_id` harus stabil.
-- nama field jangan berubah-ubah tanpa update dokumen.
-- jika server menolak upload, firmware harus punya error path yang jelas.
-- kontrak ini boleh berkembang, tetapi perubahan harus dicatat sebelum executor besar mulai coding.
+## Still Open
 
-## Hal Yang Belum Diputuskan
-
-- perlu HTTPS atau tidak
-- retry payload disimpan di RAM saja atau storage lokal
-- apakah frame dikirim periodik atau event-based
-- batas ukuran JPEG target
-- apakah server memberi ACK detail untuk retry logic
+- whether offline caching to local storage should be added
+- whether HTTPS support is required for future remote deployments
+- whether optional metadata upload should be added for camera profile, frame tag, or field label

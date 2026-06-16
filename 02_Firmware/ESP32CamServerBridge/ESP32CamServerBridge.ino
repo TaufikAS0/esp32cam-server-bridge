@@ -1,13 +1,9 @@
-#include "core/App.h"
-
-namespace {
-App app;
-}
+#include "src/core/App.h"
 
 void setup() {
-  app.begin();
+  appSetup();
 }
 
 void loop() {
-  app.update();
+  appLoop();
 }
