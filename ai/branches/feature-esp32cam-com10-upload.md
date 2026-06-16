@@ -1,4 +1,4 @@
-CURRENT | V0.2 | 2026-06-16 13:42 ICT | Codex | ESP32-CAM joined Wi-Fi, exposed HTTP debug endpoint, and was verified online at 192.168.1.22 | Next: continue web-facing device flow and server-sync design from this branch
+CURRENT | V0.3 | 2026-06-16 14:08 ICT | Codex | Integrated R02 web-portal firmware baseline from remote branch, compile-verified it, and uploaded it to COM10 | Next: let next AI continue portal polish and backend compatibility work from this updated local branch
 READING RULE | Read the CURRENT line and the first two entries under Latest Updates before editing.
 
 # Branch Worklog
@@ -8,6 +8,11 @@ READING RULE | Read the CURRENT line and the first two entries under Latest Upda
 - Purpose: `local ESP32-CAM bring-up, compile, and upload via Arduino CLI`
 
 ## Latest Updates
+
+### V0.3 | 2026-06-16 14:08 ICT | Codex
+- Did: cherry-picked the latest remote `feature/esp32cam-web-ota-uploader` implementation and R02 prompt pack into this local branch, compile-verified the new `src/` firmware layout, and uploaded the updated firmware to `COM10`
+- Files: `02_Firmware/ESP32CamServerBridge/src/*`, `04_Dokumen/Planning_Implementasi_R02.md`, `04_Dokumen/Prompt_Codex_Executor_R02.md`, `prompt.md`
+- Next: continue UI polish and backend compatibility validation; sibling backend repo was not present locally, so full contract verification still needs a machine that has that repo or network access to it
 
 ### V0.2 | 2026-06-16 13:42 ICT | Codex
 - Did: added local Wi-Fi config flow, STA connection handling, periodic reconnect, and a debug HTTP endpoint on port 80; verified board online with serial log and HTTP response at `192.168.1.22`
