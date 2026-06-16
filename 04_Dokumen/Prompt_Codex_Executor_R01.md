@@ -2,6 +2,8 @@
 
 Dokumen ini berisi prompt siap pakai untuk AI executor yang akan melanjutkan implementasi firmware di repo ini.
 
+> Catatan: dokumen ini adalah prompt bootstrap historis. Untuk current executor prompt, gunakan `prompt.md` dan `04_Dokumen/Prompt_Codex_Executor_R02.md`.
+
 ## Prompt Eksekusi
 
 ```text

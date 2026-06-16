@@ -27,9 +27,11 @@ Saat executor baru masuk ke repo ini, baca dalam urutan:
 1. `README.md`
 2. `AGENTS.md`
 3. dokumen ini
-4. `Planning_Implementasi_R01.md`
-5. `API_Server_Contract_R01.md`
-6. worklog branch aktif di `ai/branches/`
+4. `02_Firmware/ESP32CamServerBridge/README.md`
+5. `Planning_Implementasi_R02.md`
+6. `API_Server_Contract_R01.md`
+7. `prompt.md`
+8. worklog branch aktif di `ai/branches/`
 
 ### 3. Aturan Foldering
 
@@ -64,9 +66,11 @@ Minimal dokumen yang harus tetap hidup:
 
 - `README.md`
 - `AGENTS.md`
-- `Planning_Implementasi_R01.md`
+- `02_Firmware/ESP32CamServerBridge/README.md`
+- `Planning_Implementasi_R02.md`
 - `API_Server_Contract_R01.md`
 - handoff prompt untuk executor berikutnya
+- `prompt.md`
 
 Jika keputusan desain berubah, perbarui dokumen sebelum atau bersamaan dengan perubahan kode.
 

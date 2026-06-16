@@ -1,8 +1,10 @@
 # Planning Implementasi R01
 
+> Catatan: dokumen ini adalah planning bootstrap historis. Untuk planning implementasi aktif, gunakan `04_Dokumen/Planning_Implementasi_R02.md`.
+
 ## Status
 
-Dokumen ini masih perencanaan. Repo belum berisi firmware final.
+Dokumen ini merekam fase perencanaan awal. Repo sekarang sudah memiliki implemented baseline dan planning aktif sudah dipindahkan ke R02.
 
 ## Tujuan Project
 
