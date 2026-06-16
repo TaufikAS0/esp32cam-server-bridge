@@ -16,6 +16,9 @@ dist/
 *.elf
 *.map
 *.partitions.bin
+_sandbox/arduino-cli/
+_sandbox/build/
+_sandbox/tools/
 
 # Local secrets and machine-specific files
 secrets.local.*
