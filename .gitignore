@@ -1,0 +1,27 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# Arduino / PlatformIO / build outputs
+.pio/
+build/
+dist/
+*.bin
+*.elf
+*.map
+*.partitions.bin
+
+# Local secrets and machine-specific files
+secrets.local.*
+*.local.env
+02_Firmware/**/SettingsLocal.h
+02_Firmware/**/SecretsLocal.h
+
+# Logs
+*.log
