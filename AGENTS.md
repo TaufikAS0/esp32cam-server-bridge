@@ -4,20 +4,21 @@
 
 ## Mission
 
-Repo ini adalah bootstrap project ESP32-CAM yang akan terkoneksi ke server. Saat membaca repo ini, anggap implementasi firmware belum final dan tugas utama adalah melanjutkan scaffold ini dengan disiplin arsitektur, dokumentasi, dan Gitflow.
+Repo ini adalah project ESP32-CAM yang sudah memiliki implemented baseline dan harus dilanjutkan dengan disiplin arsitektur, dokumentasi, dan Gitflow. Saat membaca repo ini, anggap firmware sudah punya first working implementation dan tugas utama adalah melanjutkan baseline itu tanpa reset dari nol.
 
 ## Read First
 
 1. `README.md`
 2. `04_Dokumen/Aturan_AI_dan_Adaptasi_Obsidian_R01.md`
-3. `04_Dokumen/Planning_Implementasi_R01.md`
+3. `02_Firmware/ESP32CamServerBridge/README.md`
 4. `04_Dokumen/API_Server_Contract_R01.md`
-5. `ai/branches/<branch-slug>.md` bila file branch aktif sudah ada
+5. `04_Dokumen/Planning_Implementasi_R02.md`
+6. `prompt.md`
+7. `ai/branches/<branch-slug>.md` bila file branch aktif sudah ada
 
 ## Working Path
 
-Semua kerja untuk project ini harus berada di:
-`D:\JIN Work\Document\0. JIN Project Github Programming\2026 ESP32Cam Server Bridge`
+Semua kerja untuk project ini harus berada di clone repo aktif yang sedang dipakai executor. Jangan mengedit folder lama atau referensi bootstrap yang sudah tidak dipakai hanya karena ada path historis di dokumen lama.
 
 ## Hard Rules
 
@@ -37,6 +38,7 @@ Semua kerja untuk project ini harus berada di:
 - Jika butuh file lokal sensitif, gunakan file lokal yang di-ignore Git.
 - Jangan pivot ke MQTT, WebSocket, atau cloud stack lain kecuali user meminta. Arah default repo ini adalah ESP32-CAM `->` HTTP API server.
 - Pisahkan dokumen manual dari output generated. Jangan hapus dokumen bootstrap ini saat implementasi mulai berjalan.
+- Jangan rewrite implementasi aktif dari nol jika perubahan bisa dilakukan secara inkremental.
 
 ## Source Of Truth
 
@@ -44,7 +46,9 @@ Untuk repo ini, source of truth lokal adalah:
 
 1. `AGENTS.md`
 2. `README.md`
-3. semua dokumen di `04_Dokumen/`
+3. `02_Firmware/ESP32CamServerBridge/README.md`
+4. `prompt.md`
+5. semua dokumen di `04_Dokumen/`
 
 Jika ada keputusan arsitektur yang masih ambigu, pakai vault firmware berikut sebagai referensi induk:
 
@@ -95,23 +99,32 @@ Saat diminta melakukan operasi Git, gunakan struktur jawaban ini:
 - Baca line `CURRENT | ...` dan dua update terbaru sebelum mengubah worklog.
 - Tambahkan update terbaru di paling atas bagian `## Latest Updates`.
 
-## Expected First Implementation
+## Expected Active Implementation
 
-Saat implementasi dimulai, target file minimal yang diharapkan adalah:
+Baseline implementasi yang saat ini diharapkan tetap ada:
 
 - `ESP32CamServerBridge.ino`
-- `config/Pins.h`
-- `config/Constants.h`
-- `config/Settings.h`
-- `core/App.h`
-- `core/App.cpp`
-- `state/SystemState.h`
-- `state/SystemState.cpp`
-- `drivers/camera/*`
-- `modules/capture/*`
-- `modules/server_sync/*`
-- `comms/http/*`
+- `src/config/*`
+- `src/core/*`
+- `src/state/*`
+- `src/drivers/camera/*`
+- `src/modules/network/*`
+- `src/modules/portal/*`
+- `src/modules/ota/*`
+- `src/modules/server_sync/*`
+- `src/comms/http/*`
+
+Kemampuan baseline yang harus dianggap sudah ada:
+
+- Wi-Fi station connect
+- fallback setup AP
+- local setup portal
+- live preview
+- raw JPEG snapshot upload
+- heartbeat
+- Arduino OTA
+- browser OTA
 
 ## Mini PC Handoff
 
-Jika executor berikutnya bekerja di mini PC, arahkan dia membaca `04_Dokumen/HANDOFF_MINI_PC_R01.md` dan `04_Dokumen/Prompt_Codex_Executor_R01.md` sebelum mengubah kode.
+Jika executor berikutnya bekerja di mini PC, arahkan dia membaca `04_Dokumen/HANDOFF_MINI_PC_R01.md`, `04_Dokumen/Prompt_Codex_Executor_R02.md`, dan `prompt.md` sebelum mengubah kode.
