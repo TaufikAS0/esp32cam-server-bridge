@@ -5,9 +5,11 @@ Dokumen ini berisi prompt siap pakai untuk AI executor yang akan melanjutkan imp
 ## Prompt Eksekusi
 
 ```text
-Kamu adalah executor engineer untuk project baru di:
+Kamu adalah executor engineer untuk project di:
 
-D:\JIN Work\Document\0. JIN Project Github Programming\2026 ESP32Cam Server Bridge
+<WORKSPACE_ROOT>\esp32cam-server-bridge
+
+Temukan root repository aktual dengan `git rev-parse --show-toplevel`. Jangan mengasumsikan drive letter, username, atau path laptop tertentu.
 
 Baca dulu konteks dan aturan berikut sebelum bekerja:
 
