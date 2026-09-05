@@ -1,6 +1,6 @@
 @C:\Users\ASUS\.codex\RTK.md
 
-# AGENTS.md - 2026 ESP32Cam Server Bridge
+# AGENTS.md - ESP32Cam Server Bridge
 
 ## Mission
 
@@ -16,8 +16,9 @@ Repo ini adalah bootstrap project ESP32-CAM yang akan terkoneksi ke server. Saat
 
 ## Working Path
 
-Semua kerja untuk project ini harus berada di:
-`D:\JIN Work\Document\0. JIN Project Github Programming\2026 ESP32Cam Server Bridge`
+- Nama folder clone lokal harus `esp32cam-server-bridge`, sama dengan slug GitHub.
+- Temukan root aktual dengan `git rev-parse --show-toplevel`; jangan hardcode drive letter, username, atau path laptop.
+- Jika nama folder clone berbeda, berhenti dan audit dependency sebelum rename.
 
 ## Hard Rules
 
@@ -46,11 +47,12 @@ Untuk repo ini, source of truth lokal adalah:
 2. `README.md`
 3. semua dokumen di `04_Dokumen/`
 
-Jika ada keputusan arsitektur yang masih ambigu, pakai vault firmware berikut sebagai referensi induk:
+Jika ada keputusan arsitektur yang masih ambigu, baca `AGENTS.md` pada root workspace untuk menemukan lokasi vault firmware, lalu gunakan:
 
-- `D:\JIN Work\Document\0. JIN Project Github Programming\2026 Vault Firmware Rules\00_Start_Here\Firmware_AI_Vault_Home.md`
-- `D:\JIN Work\Document\0. JIN Project Github Programming\2026 Vault Firmware Rules\01_Rules\Rules_Firmware_Standar.md`
-- `D:\JIN Work\Document\0. JIN Project Github Programming\2026 Vault Firmware Rules\01_Rules\Rules_GitHub_Gitflow.md`
+- `00_Start_Here/Firmware_AI_Vault_Home.md`
+- `01_Rules/Rules_Nama_dan_Folder_Workspace.md`
+- `01_Rules/Rules_Firmware_Standar.md`
+- `01_Rules/Rules_GitHub_Gitflow.md`
 
 ## Default Firmware Direction
 

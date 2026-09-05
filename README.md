@@ -1,4 +1,4 @@
-# 2026 ESP32Cam Server Bridge
+# ESP32Cam Server Bridge
 
 Bootstrap repository untuk project ESP32-CAM yang akan mengambil gambar lalu mengirimkannya ke server, dengan target penerus kerja di mini PC atau executor AI lain.
 
@@ -19,7 +19,7 @@ Bootstrap repository untuk project ESP32-CAM yang akan mengambil gambar lalu men
 ## Struktur Root
 
 ```text
-2026 ESP32Cam Server Bridge/
+esp32cam-server-bridge/
 |-- 01_Desain/
 |-- 02_Firmware/
 |   `-- ESP32CamServerBridge/
